@@ -6,13 +6,14 @@ import {
     Th,
     Td,
     TableCaption,
-    TableContainer,
+    TableContainer, Badge,
 } from '@chakra-ui/react'
 import {initialTasks} from "../../config/const";
 import {useContext, useEffect} from "react";
 import {TaskContext} from "../../context/taskContext";
 import UpdateTask from "../common/UpdateTask";
 import DeleteTask from "../common/DeleteTask";
+import {getPriorityColor} from "../../libs/helper";
 const TablePage = () => {
     const context = useContext(TaskContext)
     useEffect(() => {
@@ -27,7 +28,7 @@ const TablePage = () => {
                         <Tr>
                             <Th>Task Title</Th>
                             <Th>Priority</Th>
-                            <Th>Progress</Th>
+                            <Th>Status</Th>
                             <Th>Start day</Th>
                             <Th>Deadline</Th>
                             <Th>Update/Delete</Th>
@@ -38,8 +39,8 @@ const TablePage = () => {
                             task.status === "Undo" && (
                                 <Tr key={task.id}>
                                     <Td>{task.title}</Td>
-                                    <Td>{task.priority}</Td>
-                                    <Td>{task.status}</Td>
+                                    <Td><Badge colorScheme={getPriorityColor(task.priority)}>{task.priority}</Badge></Td>
+                                    <Td><Badge colorScheme='green'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
                                     <Td>
@@ -49,36 +50,48 @@ const TablePage = () => {
                                 </Tr>
                             )
                         ))}
-                        {initialTasks.map(task => (
+                        {context?.state.tasks.map(task => (
                             task.status === "Progress" && (
                                 <Tr key={task.id}>
                                     <Td>{task.title}</Td>
-                                    <Td>{task.priority}</Td>
-                                    <Td>{task.status}</Td>
+                                    <Td><Badge colorScheme={getPriorityColor(task.priority)}>{task.priority}</Badge></Td>
+                                    <Td><Badge colorScheme='blue'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
+                                    <Td>
+                                        <UpdateTask task={task}/>
+                                        <DeleteTask task={task}/>
+                                    </Td>
                                 </Tr>
                             )
                         ))}
-                        {initialTasks.map(task => (
+                        {context?.state.tasks.map(task => (
                             task.status === "Review" && (
                                 <Tr key={task.id}>
                                     <Td>{task.title}</Td>
-                                    <Td>{task.priority}</Td>
-                                    <Td>{task.status}</Td>
+                                    <Td><Badge colorScheme={getPriorityColor(task.priority)}>{task.priority}</Badge></Td>
+                                    <Td><Badge colorScheme='yellow'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
+                                    <Td>
+                                        <UpdateTask task={task}/>
+                                        <DeleteTask task={task}/>
+                                    </Td>
                                 </Tr>
                             )
                         ))}
-                        {initialTasks.map(task => (
+                        {context?.state.tasks.map(task => (
                             task.status === "Done" && (
                                 <Tr key={task.id}>
                                     <Td>{task.title}</Td>
-                                    <Td>{task.priority}</Td>
-                                    <Td>{task.status}</Td>
+                                    <Td><Badge colorScheme={getPriorityColor(task.priority)}>{task.priority}</Badge></Td>
+                                    <Td><Badge colorScheme='red'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
+                                    <Td>
+                                        <UpdateTask task={task}/>
+                                        <DeleteTask task={task}/>
+                                    </Td>
                                 </Tr>
                             )
                         ))}

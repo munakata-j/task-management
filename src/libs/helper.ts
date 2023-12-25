@@ -5,3 +5,16 @@ export function generateUniqueID(){
     console.log("Next ID -> ",NextID, ":","Unique ID ->", uniqueID)
     return uniqueID
 }
+
+export function getPriorityColor(priority: string){
+    switch (priority){
+        case "High":
+            return "red";
+        case "Middle":
+            return "blue";
+        case "Low":
+            return "green"
+        default:
+            return "grey"
+    }
+}
