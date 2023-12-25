@@ -11,6 +11,8 @@ import {
 import {initialTasks} from "../../config/const";
 import {useContext, useEffect} from "react";
 import {TaskContext} from "../../context/taskContext";
+import UpdateTask from "../common/UpdateTask";
+import DeleteTask from "../common/DeleteTask";
 const TablePage = () => {
     const context = useContext(TaskContext)
     useEffect(() => {
@@ -28,23 +30,28 @@ const TablePage = () => {
                             <Th>Progress</Th>
                             <Th>Start day</Th>
                             <Th>Deadline</Th>
+                            <Th>Update/Delete</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
                         {context?.state.tasks.map(task => (
                             task.status === "Undo" && (
-                                <Tr>
+                                <Tr key={task.id}>
                                     <Td>{task.title}</Td>
                                     <Td>{task.priority}</Td>
                                     <Td>{task.status}</Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
+                                    <Td>
+                                        <UpdateTask task={task}/>
+                                        <DeleteTask task={task}/>
+                                    </Td>
                                 </Tr>
                             )
                         ))}
                         {initialTasks.map(task => (
                             task.status === "Progress" && (
-                                <Tr>
+                                <Tr key={task.id}>
                                     <Td>{task.title}</Td>
                                     <Td>{task.priority}</Td>
                                     <Td>{task.status}</Td>
@@ -55,7 +62,7 @@ const TablePage = () => {
                         ))}
                         {initialTasks.map(task => (
                             task.status === "Review" && (
-                                <Tr>
+                                <Tr key={task.id}>
                                     <Td>{task.title}</Td>
                                     <Td>{task.priority}</Td>
                                     <Td>{task.status}</Td>
@@ -66,7 +73,7 @@ const TablePage = () => {
                         ))}
                         {initialTasks.map(task => (
                             task.status === "Done" && (
-                                <Tr>
+                                <Tr key={task.id}>
                                     <Td>{task.title}</Td>
                                     <Td>{task.priority}</Td>
                                     <Td>{task.status}</Td>
