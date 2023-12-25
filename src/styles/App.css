@@ -1,0 +1,28 @@
+header{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    border-bottom: black solid;
+}
+.ul-parent {
+    display: flex;
+    justify-content: center;
+}
+.ul-container {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-container {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+.nav-form {
+    display: flex;
+    justify-content: end;
+    margin: 10px;
+}
+li {
+    list-style: none;
+}
