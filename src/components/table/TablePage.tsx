@@ -8,7 +8,6 @@ import {
     TableCaption,
     TableContainer, Badge,
 } from '@chakra-ui/react'
-import {initialTasks} from "../../config/const";
 import {useContext, useEffect} from "react";
 import {TaskContext} from "../../context/taskContext";
 import UpdateTask from "../common/UpdateTask";

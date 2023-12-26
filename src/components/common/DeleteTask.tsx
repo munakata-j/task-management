@@ -17,15 +17,11 @@ interface Props {
 const DeleteTask = ({task}: Props) => {
     const context = useContext(TaskContext)
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [deleteTask, setDeleteTask] = useState<Task>({
-        deadline: task.deadline, id: task.id, priority:
-        task.priority, start_dt: task.start_dt, status: task.status, title: task.title
-    })
 
     const saveDeleteTask = () => {
         context?.dispatch({
             type: "delete",
-            payload: deleteTask
+            payload: task
         })
     }
     return (
@@ -48,7 +44,7 @@ const DeleteTask = ({task}: Props) => {
                         <Button colorScheme='red' onClick={() => {
                             saveDeleteTask();
                             onClose();
-                        }}>Update</Button>
+                        }}>Delete</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

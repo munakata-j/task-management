@@ -10,9 +10,9 @@ import {
 import {ChangeEvent, useContext, useEffect, useState} from "react";
 import {Task} from "../../types/type";
 import {TaskContext} from "../../context/taskContext";
-import {generateUniqueID} from "../../libs/helper";
 import {priorityMap, statusMap} from "../../config/const";
 import {EditIcon} from "@chakra-ui/icons";
+import useValidationChecker from "../../hooks/useValidationChecker";
 
 interface Props {
     task: Task
@@ -25,19 +25,43 @@ const UpdateTask = ({task}: Props) => {
         deadline: task.deadline, id: task.id, priority:
         task.priority, start_dt: task.start_dt, status: task.status, title: task.title
     })
+    const {errorMsg, inputDeadlineCheck, isNullEmptyCheck} = useValidationChecker()
+    const [isValid, setIsValid] = useState(true)
+
     const handleInput = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
         const {name, value} = e.target
         setUpdateTask(prevState => ({...prevState, [name]: value}))
+        setIsValid(true)
     }
     const saveUpdateTask = () => {
+        if(!isNullEmptyCheck(updateTask) ||
+            !inputDeadlineCheck(updateTask.deadline, updateTask.start_dt)){
+            setIsValid(false)
+            keepState()
+            return;
+        }
         context?.dispatch({
             type: "update",
             payload: updateTask
         })
+        initializer()
+        setIsValid(true)
+        onClose();
     }
-    useEffect(() => {
-        console.log(updateTask)
-    }, [updateTask]);
+
+    const initializer = () => {
+        setUpdateTask({
+            deadline: "", id: 0, priority: "",
+            start_dt: "", status: "", title: ""
+        })
+    }
+    const keepState = () => {
+        setUpdateTask({
+            deadline: updateTask.deadline, id: updateTask.id, priority: updateTask.priority,
+            start_dt: updateTask.start_dt, status: updateTask.status, title: updateTask.title
+        })
+    }
+
     return (
         <>
             <EditIcon style={{cursor: "pointer"}} onClick={onOpen} w={6} h={6} color='green.500'/>
@@ -100,10 +124,15 @@ const UpdateTask = ({task}: Props) => {
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                             Close
                         </Button>
-                        <Button colorScheme='red' onClick={() => {
-                            saveUpdateTask();
-                            onClose();
-                        }}>Update</Button>
+                        {isValid ? (
+                            <Button colorScheme='red' onClick={() => {
+                                saveUpdateTask();
+                            }}>Update</Button>
+                        ):(
+                            <Button isDisabled={true} colorScheme='red' onClick={() => {
+                                saveUpdateTask();
+                            }}>Update</Button>
+                        )}
                     </ModalFooter>
                 </ModalContent>
             </Modal>

@@ -1,8 +1,6 @@
 import {Task, TaskAction, TaskList} from "../types/type";
 
 const useTaskReducer = (state: TaskList, action: TaskAction): TaskList => {
-    console.log("saate ->", state)
-    console.log("action ->", action)
     switch (action.type) {
         case "create":
             return {
