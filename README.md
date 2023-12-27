@@ -1,3 +1,5 @@
+## Task Management Application
+* No using db and backend API. tasks are stored in react state.
 ## Directory structure
 ```
 src
@@ -31,4 +33,3 @@ src
 
 ```
 
-### Kanban -> 進捗に応じて、初期処理で進捗ごとの配列を作成
