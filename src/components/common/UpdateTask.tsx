@@ -7,7 +7,7 @@ import {
     ModalOverlay, Select, Text,
     useDisclosure
 } from "@chakra-ui/react";
-import {ChangeEvent, useContext, useEffect, useState} from "react";
+import {ChangeEvent, useContext, useState} from "react";
 import {Task} from "../../types/type";
 import {TaskContext} from "../../context/taskContext";
 import {priorityMap, statusMap} from "../../config/const";
@@ -80,6 +80,9 @@ const UpdateTask = ({task}: Props) => {
                                 size='sm'
                                 defaultValue={task.title}
                             />
+                            {!isValid && (
+                                <Text fontSize='sm' color="red">{errorMsg.tittleError}</Text>
+                            )}
                         </div>
                         <div className="form">
                             <Text mb='6px'>Priority</Text>
@@ -88,6 +91,9 @@ const UpdateTask = ({task}: Props) => {
                                     <option key={priority.name} value={priority.name}>{priority.name}</option>
                                 ))}
                             </Select>
+                            {!isValid && (
+                                <Text fontSize='sm' color="red">{errorMsg.priorityError}</Text>
+                            )}
                         </div>
                         <div className="form">
                             <Text mb='6px'>Status</Text>
@@ -96,6 +102,9 @@ const UpdateTask = ({task}: Props) => {
                                     <option key={status.name} value={status.name}>{status.name}</option>
                                 ))}
                             </Select>
+                            {!isValid && (
+                                <Text fontSize='sm' color="red">{errorMsg.statusError}</Text>
+                            )}
                         </div>
                         <div className="form">
                             <Text mb='6px'>Start day</Text>
@@ -107,6 +116,9 @@ const UpdateTask = ({task}: Props) => {
                                 size='sm'
                                 defaultValue={task.start_dt}
                             />
+                            {!isValid && (
+                                <Text fontSize='sm' color="red">{errorMsg.startDayError}</Text>
+                            )}
                         </div>
                         <div className="form">
                             <Text mb='6px'>Deadline</Text>
@@ -118,6 +130,9 @@ const UpdateTask = ({task}: Props) => {
                                 size='sm'
                                 defaultValue={task.deadline}
                             />
+                            {!isValid && (
+                                <Text fontSize='sm' color="red">{errorMsg.deadlineError}</Text>
+                            )}
                         </div>
                     </ModalBody>
                     <ModalFooter>

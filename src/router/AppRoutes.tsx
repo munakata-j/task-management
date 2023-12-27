@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import CalendarView from "../components/calendar/CalendarView";
+import CalendarView from "../views/CalendarView";
 import KanbanBoard from "../components/kanaban/KanbanBoard";
 import TableView from "../views/TableView";
 export function AppRoutes(){
