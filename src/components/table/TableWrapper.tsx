@@ -8,14 +8,13 @@ import {
     TableCaption,
     TableContainer, Badge,
 } from '@chakra-ui/react'
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {TaskContext} from "../../context/taskContext";
 import UpdateTask from "../common/UpdateTask";
 import DeleteTask from "../common/DeleteTask";
 import {getPriorityColor} from "../../libs/helper";
 export function TableWrapper () {
     const context = useContext(TaskContext)
-
     return (
         <div className="table-container">
             <TableContainer>
