@@ -9,8 +9,8 @@ const CalendarPage = () => {
     const context = useContext(TaskContext)
 
     return (
-        <>
-            <div className="table-container">
+        <div className="table-container">
+            <div className="calender">
                 <Calendar
                     localizer={localizer}
                     startAccessor="start"
@@ -26,7 +26,7 @@ const CalendarPage = () => {
                     style={{ height: 800 }}
                 />
             </div>
-        </>
+        </div>
     )
 }
 export default CalendarPage

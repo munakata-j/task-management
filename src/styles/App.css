@@ -1,31 +1,36 @@
 /* CSS memo
 詳細度、ボックスモデル、フレックスボックス→ 下位のブロックに対して適用
 */
-header{
+header {
     display: flex;
     justify-content: center;
     margin: 30px;
     border-bottom: black solid;
 }
+
 .ul-parent {
     display: flex;
     justify-content: center;
 }
+
 .ul-container {
     width: 500px;
     display: flex;
     justify-content: space-between;
 }
+
 .nav-container {
     width: 1000px;
     display: flex;
     flex-direction: column;
 }
+
 .nav-form {
     display: flex;
     justify-content: end;
     margin: 10px;
 }
+
 li {
     list-style: none;
 }
@@ -34,10 +39,73 @@ li {
 Table styles
 */
 .table-container {
-   display: flex;
+    display: flex;
     justify-content: center;
 }
+
 .flexItem {
     display: flex;
     justify-content: space-evenly;
+}
+
+.calender {
+    display: flex;
+    justify-content: center;
+    width: 700px;
+}
+
+/* スマートフォン向けのスタイル */
+@media only screen and (max-width: 767px) {
+    header {
+        display: flex;
+        justify-content: center;
+        margin: 30px;
+        border-bottom: black solid;
+    }
+
+    .ul-parent {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ul-container {
+        width: 400px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .nav-container {
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-form {
+        display: flex;
+        justify-content: end;
+        margin: 10px;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    /*
+    Table styles
+    */
+    .table-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .flexItem {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .calender {
+        display: flex;
+        justify-content: center;
+        width: 400px;
+    }
 }
