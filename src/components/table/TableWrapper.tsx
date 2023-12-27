@@ -8,18 +8,16 @@ import {
     TableCaption,
     TableContainer, Badge,
 } from '@chakra-ui/react'
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {TaskContext} from "../../context/taskContext";
 import UpdateTask from "../common/UpdateTask";
 import DeleteTask from "../common/DeleteTask";
 import {getPriorityColor} from "../../libs/helper";
-const TablePage = () => {
+export function TableWrapper () {
     const context = useContext(TaskContext)
-    useEffect(() => {
-        console.log("Tasks", context?.state)
-    }, [context?.state]);
+
     return (
-        <div>
+        <div className="table-container">
             <TableContainer>
                 <Table variant="simple">
                     <TableCaption></TableCaption>
@@ -42,7 +40,7 @@ const TablePage = () => {
                                     <Td><Badge colorScheme='green'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
-                                    <Td>
+                                    <Td className="flexItem">
                                         <UpdateTask task={task}/>
                                         <DeleteTask task={task}/>
                                     </Td>
@@ -57,7 +55,7 @@ const TablePage = () => {
                                     <Td><Badge colorScheme='blue'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
-                                    <Td>
+                                    <Td className="flexItem">
                                         <UpdateTask task={task}/>
                                         <DeleteTask task={task}/>
                                     </Td>
@@ -72,7 +70,7 @@ const TablePage = () => {
                                     <Td><Badge colorScheme='yellow'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
-                                    <Td>
+                                    <Td className="flexItem">
                                         <UpdateTask task={task}/>
                                         <DeleteTask task={task}/>
                                     </Td>
@@ -87,7 +85,7 @@ const TablePage = () => {
                                     <Td><Badge colorScheme='red'>{task.status}</Badge></Td>
                                     <Td>{task.start_dt}</Td>
                                     <Td>{task.deadline}</Td>
-                                    <Td>
+                                    <Td className="flexItem">
                                         <UpdateTask task={task}/>
                                         <DeleteTask task={task}/>
                                     </Td>
@@ -100,4 +98,3 @@ const TablePage = () => {
         </div>
     )
 }
-export default TablePage

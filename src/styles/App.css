@@ -1,3 +1,6 @@
+/* CSS memo
+詳細度、ボックスモデル、フレックスボックス→ 下位のブロックに対して適用
+*/
 header{
     display: flex;
     justify-content: center;
@@ -25,4 +28,16 @@ header{
 }
 li {
     list-style: none;
+}
+
+/*
+Table styles
+*/
+.table-container {
+   display: flex;
+    justify-content: center;
+}
+.flexItem {
+    display: flex;
+    justify-content: space-evenly;
 }

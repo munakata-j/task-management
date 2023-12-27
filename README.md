@@ -13,7 +13,7 @@ src
 |   |   |-- CalendarPage.tsx
 |   |   |-- CalendarView.tsx
 |   |-- table
-|   |   |-- TablePage.tsx
+|   |   |-- TableWrapper.tsx
 |   |   |-- TaskTable.tsx
 |   |-- App.tsx
 |-- hooks
