@@ -1,15 +1,16 @@
-import { useContext, useState} from "react";
+import { useContext} from "react";
 import {TaskContext} from "../../context/taskContext";
+import {Task} from "../../types/type";
 import {
     Button,
-    Modal, ModalBody,
-    ModalCloseButton,
-    ModalContent, ModalFooter,
+    Modal,
+    ModalBody,
+    ModalContent,
+    ModalFooter,
     ModalHeader,
     ModalOverlay,
     useDisclosure
 } from "@chakra-ui/react";
-import {Task} from "../../types/type";
 import {DeleteIcon} from "@chakra-ui/icons";
 interface Props {
     task: Task
@@ -26,12 +27,11 @@ const DeleteTask = ({task}: Props) => {
     }
     return (
         <>
-            <DeleteIcon style={{cursor: "pointer"}} onClick={onOpen} w={6} h={6} color='red.500'/>
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <DeleteIcon data-testid="delete-icon" style={{cursor: "pointer"}} onClick={onOpen} w={6} h={6} color='red.500'/>
+            <Modal　closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Delete Task</ModalHeader>
-                    <ModalCloseButton />
                     <ModalBody>
                         <div className="form">
                             Delete this task, Is it okay?

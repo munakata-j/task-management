@@ -64,11 +64,11 @@ const UpdateTask = ({task}: Props) => {
 
     return (
         <>
-            <EditIcon style={{cursor: "pointer"}} onClick={onOpen} w={6} h={6} color='green.500'/>
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <EditIcon　data-testid="edit-icon" style={{cursor: "pointer"}} onClick={onOpen} w={6} h={6} color='green.500'/>
+            <Modal　closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay/>
                 <ModalContent>
-                    <ModalHeader>Create Task</ModalHeader>
+                    <ModalHeader>Update Task</ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
                         <div className="form">
@@ -112,7 +112,7 @@ const UpdateTask = ({task}: Props) => {
                                 onChange={handleInput}
                                 name="start_dt"
                                 type="date"
-                                placeholder='Here is a sample placeholder'
+                                placeholder='Start day'
                                 size='sm'
                                 defaultValue={task.start_dt}
                             />
@@ -126,7 +126,7 @@ const UpdateTask = ({task}: Props) => {
                                 onChange={handleInput}
                                 name="deadline"
                                 type="date"
-                                placeholder='Here is a sample placeholder'
+                                placeholder='Deadline'
                                 size='sm'
                                 defaultValue={task.deadline}
                             />

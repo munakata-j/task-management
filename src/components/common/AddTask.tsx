@@ -104,7 +104,7 @@ const AddTask = () => {
                                 onChange={handleInput}
                                 name="start_dt"
                                 type="date"
-                                placeholder='Here is a sample placeholder'
+                                placeholder='Start day'
                                 size='sm'
                             />
                             {!isValid && (
@@ -117,7 +117,7 @@ const AddTask = () => {
                                 onChange={handleInput}
                                 name="deadline"
                                 type="date"
-                                placeholder='Here is a sample placeholder'
+                                placeholder='Deadline'
                                 size='sm'
                             />
                             {!isValid && (
